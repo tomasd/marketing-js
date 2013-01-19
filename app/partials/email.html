@@ -1,0 +1,67 @@
+<!--{% extends "campaigntypeedit/campaign_edit.html" %}
+{% from "_forms_h.html" import render_form, render_field, render_errors %}
+ -->
+<!-- {% block javascript %}
+    {{ super() }}
+    <script type="text/javascript">
+        var PLACEHOLDER_ITEMS = {{ placeholders|tojson|safe }};
+    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/libs/ckeditor-3.6.4/ckeditor.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/libs/ckeditor-3.6.4/adapters/jquery.js') }}"></script>
+
+    <script type="text/javascript">
+    $(function() {
+
+        $("textarea#template").ckeditor({height: '600px', width:'850px'});
+    });
+    </script>
+{% endblock %}
+ -->
+<!-- {% block css %}
+<style>
+    #cke_message_template-template {
+        border: 0px;
+        box-shadow: none;
+    }
+</style>
+{% endblock %} -->
+
+<!-- {% block page_header %}
+    {{ gettext('Email') }}
+{% endblock %} -->
+
+<!-- {% block before_segmentation %}-->
+    <div class="row-fluid control-group ">
+    <!--{% if form.from_name.errors or form.from_email.errors %}error{% endif %}
+    ">-->
+        <div class="span1">
+            <label class="control-label">
+<!--                 {{ gettext('From') }} -->
+            </label>
+        </div>
+        <div class="span5">
+            <!-- {{ form.from_email(placeholder=gettext('From email'), class_="span11") }}
+            {{ render_errors(form.from_email) }} -->
+        </div>
+        <div class="span1">
+            <label class="control-label"><!-- {{ gettext('Name') }} --></label>
+        </div>
+        <div class="span5">
+            <!-- {{ form.from_name(placeholder=gettext('From name'), class_="span11") }}
+            {{ render_errors(form.from_name) }} -->
+        </div>
+    </div >
+<!--{% endblock %}
+ -->
+<!-- {% block after_segmentation %}
+    {{ render_field(form.subject, class_="span11") }}
+    <div class="pull-right">
+        <ul class="unstyled ul-horizontal">
+            <li> <a href="{{ url_for('campaign.template_form_url', campaign_id=campaign.id) }}">{{ gettext('Load from URL') }}</a></li>
+            <li>|</li>
+            <li> <a href="{{ url_for('campaign.update_template', campaign_id=campaign.id) }}">{{ gettext('Select template') }}</a></li>
+        </ul>
+    </div>
+    {{ render_field(form.template, class_="span11") }}
+{% endblock %}
+-->

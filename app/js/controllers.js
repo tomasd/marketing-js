@@ -2,6 +2,9 @@
 
 /* Controllers */
 
+function EmailCtrl() {}
+EmailCtrl.$inject = [];
+
 
 function MyCtrl1() {}
 MyCtrl1.$inject = [];
