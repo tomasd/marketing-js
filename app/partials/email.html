@@ -6,8 +6,8 @@
     <script type="text/javascript">
         var PLACEHOLDER_ITEMS = {{ placeholders|tojson|safe }};
     </script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/libs/ckeditor-3.6.4/ckeditor.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/libs/ckeditor-3.6.4/adapters/jquery.js') }}"></script>
+    <script type="text/javascript" src="js/libs/ckeditor-3.6.4/ckeditor.js"></script>
+    <script type="text/javascript" src="js/libs/ckeditor-3.6.4/adapters/jquery.js"></script>
 
     <script type="text/javascript">
     $(function() {
@@ -26,42 +26,127 @@
 </style>
 {% endblock %} -->
 
-<!-- {% block page_header %}
-    {{ gettext('Email') }}
-{% endblock %} -->
+<div class="page-header">
+        <h1>
+            <h1>Email</h1>
+        </h1>
+    </div>
+    <form action="" method="post" class="span12">
+        <!-- {{ render_field(form.csrf_token) }} -->
+        <div class="form-actions">
+            <button class="btn span2" style="position: absolute; top: -4000px;">
+                <b>Save</b></button>
+            <button name="send" class="btn btn-danger span2" value="1"><b>
+                Send</b></button>
+            <button id="plan-button" type="button" class="btn btn-info span2" value="1"><b>
+                Plan later</b></button>
+            <button class="btn span2"><b>Save</b></button>
+            <button name="discard" class="btn span2" value="1"><b>Discard</b></button>
+            <button id="copy-button" type="button" class="btn span2"><b>Copy from...</b></button>
+        </div>
+        <div id="copy-group" class="row-fluid control-group hide">
+            <div class="alert clearfix">
+            <div class="span2">
+                <label class="control-label">Copy from campaign</label>
+            </div>
+            <div class="span10">
+                <input type="text" class="span12" id="search"/>
+            </div>
+            </div>
+        </div>
+        <div id="planned-execution-group" class="row-fluid control-group {% if form.planned_execution.errors %}error{% endif %}">
+            <div class="alert clearfix">
+            <div class="span2">
+                <label class="control-label">Planned execution</label>
+            </div>
+            <div class="span4">
+                <!-- {{ form.planned_execution(class_="span12") }} -->
+                <!-- {{ render_errors(form.planned_execution) }} -->
+            </div>
+            <div class="span4">
+                <button name="plan" class="btn btn-danger span4" value="1"><b>Plan it!</b></button>
+            </div>
+            </div>
+        </div>
+        <div class="well clearfix">
+            <div class="row-fluid control-group ">
+            <!--{% if form.from_name.errors or form.from_email.errors %}error{% endif %}
+            ">-->
+                <div class="span1">
+                    <label class="control-label">
+            <!--                 From -->
+                    </label>
+                </div>
+                <div class="span5">
+                    <!-- {{ form.from_email(placeholder=gettext('From email'), class_="span11") }}
+                    {{ render_errors(form.from_email) }} -->
+                </div>
+                <div class="span1">
+                    <label class="control-label"><!-- Name --></label>
+                </div>
+                <div class="span5">
+                    <!-- {{ form.from_name(placeholder=gettext('From name'), class_="span11") }}
+                    {{ render_errors(form.from_name) }} -->
+                </div>
+            </div >
+            <!-- {% if campaign.addressable %} -->
+            <div class="row-fluid">
+                <div class="span1">
+                    <label class="control-label">To</label>
+                </div>
+                <div class="span11">
+                    <span class="badge badge-info">
+                        %(customers_count)d customers
+                    </span>
+                <a href="campaignfilter.customers', campaign_id=campaign.id, campaign_type=campaign.campaign_type) }}">
+                    Change
+                </a>
 
-<!-- {% block before_segmentation %}-->
-    <div class="row-fluid control-group ">
-    <!--{% if form.from_name.errors or form.from_email.errors %}error{% endif %}
-    ">-->
-        <div class="span1">
-            <label class="control-label">
-<!--                 {{ gettext('From') }} -->
-            </label>
-        </div>
-        <div class="span5">
-            <!-- {{ form.from_email(placeholder=gettext('From email'), class_="span11") }}
-            {{ render_errors(form.from_email) }} -->
-        </div>
-        <div class="span1">
-            <label class="control-label"><!-- {{ gettext('Name') }} --></label>
-        </div>
-        <div class="span5">
-            <!-- {{ form.from_name(placeholder=gettext('From name'), class_="span11") }}
-            {{ render_errors(form.from_name) }} -->
-        </div>
-    </div >
-<!--{% endblock %}
- -->
-<!-- {% block after_segmentation %}
+
+                </div>
+            </div>
+            <!-- {% endif %} -->
+           <!-- {% block after_segmentation %}
     {{ render_field(form.subject, class_="span11") }}
     <div class="pull-right">
         <ul class="unstyled ul-horizontal">
-            <li> <a href="{{ url_for('campaign.template_form_url', campaign_id=campaign.id) }}">{{ gettext('Load from URL') }}</a></li>
+            <li> <a href="campaign.template_form_url', campaign_id=campaign.id) }}">Load from URL</a></li>
             <li>|</li>
-            <li> <a href="{{ url_for('campaign.update_template', campaign_id=campaign.id) }}">{{ gettext('Select template') }}</a></li>
+            <li> <a href="campaign.update_template', campaign_id=campaign.id) }}">Select template</a></li>
         </ul>
     </div>
     {{ render_field(form.template, class_="span11") }}
 {% endblock %}
 -->
+        </div>
+
+        <div class="accordion" id="advanced-settings">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a data-toggle="collapse" data-target="#budget" data-parent="advanced-settings" href="#budget" class="accordion-toggle">
+                        Budget
+                    </a>
+                </div>
+                <div id="budget" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <!-- {{ render_field(form.fix_price) }}
+                        {% if form.unit_price %}
+                            {{ render_field(form.unit_price) }}
+                        {% endif %}
+
+                        {% if form.units %}
+                            {{ render_field(form.units) }}
+                        {% endif %} -->
+
+                        <div id="price-total"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form id="copy-form" action="campaign.copy" method="post">
+        <input type="hidden" name="target" value="{{ campaign.id }}"/>
+        <input type="hidden" name="source"/>
+    </form>
+
+
