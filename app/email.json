@@ -1,0 +1,10 @@
+{
+    "from" : "demo@demo.sk",
+    "fromName" : "Demo Demo",
+    "subject" : "sample subject",
+    "message" : "aaaaa",
+    "messageType" : "text",
+    "controlGroup" : 0.1,
+    "purchaseWindow" : 1,
+    "to" : []
+}

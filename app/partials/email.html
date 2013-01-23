@@ -1,152 +1,198 @@
-<!--{% extends "campaigntypeedit/campaign_edit.html" %}
-{% from "_forms_h.html" import render_form, render_field, render_errors %}
- -->
-<!-- {% block javascript %}
-    {{ super() }}
-    <script type="text/javascript">
-        var PLACEHOLDER_ITEMS = {{ placeholders|tojson|safe }};
-    </script>
-    <script type="text/javascript" src="js/libs/ckeditor-3.6.4/ckeditor.js"></script>
-    <script type="text/javascript" src="js/libs/ckeditor-3.6.4/adapters/jquery.js"></script>
-
-    <script type="text/javascript">
-    $(function() {
-
-        $("textarea#template").ckeditor({height: '600px', width:'850px'});
-    });
-    </script>
-{% endblock %}
- -->
-<!-- {% block css %}
-<style>
-    #cke_message_template-template {
-        border: 0px;
-        box-shadow: none;
-    }
-</style>
-{% endblock %} -->
-
-<div class="page-header">
-        <h1>
-            <h1>Email</h1>
-        </h1>
+<div class="page-header">        
+            <div class="row">
+                <div class="span12">
+                    <div class="inner">
+                        <h1 class="title">Email</h1>
+                    </div>
+                </div>
+            </div>        
     </div>
-    <form action="" method="post" class="span12">
-        <!-- {{ render_field(form.csrf_token) }} -->
-        <div class="form-actions">
-            <button class="btn span2" style="position: absolute; top: -4000px;">
-                <b>Save</b></button>
-            <button name="send" class="btn btn-danger span2" value="1"><b>
-                Send</b></button>
-            <button id="plan-button" type="button" class="btn btn-info span2" value="1"><b>
-                Plan later</b></button>
-            <button class="btn span2"><b>Save</b></button>
-            <button name="discard" class="btn span2" value="1"><b>Discard</b></button>
-            <button id="copy-button" type="button" class="btn span2"><b>Copy from...</b></button>
-        </div>
-        <div id="copy-group" class="row-fluid control-group hide">
-            <div class="alert clearfix">
-            <div class="span2">
-                <label class="control-label">Copy from campaign</label>
-            </div>
-            <div class="span10">
-                <input type="text" class="span12" id="search"/>
-            </div>
-            </div>
-        </div>
-        <div id="planned-execution-group" class="row-fluid control-group {% if form.planned_execution.errors %}error{% endif %}">
-            <div class="alert clearfix">
-            <div class="span2">
-                <label class="control-label">Planned execution</label>
-            </div>
-            <div class="span4">
-                <!-- {{ form.planned_execution(class_="span12") }} -->
-                <!-- {{ render_errors(form.planned_execution) }} -->
-            </div>
-            <div class="span4">
-                <button name="plan" class="btn btn-danger span4" value="1"><b>Plan it!</b></button>
-            </div>
-            </div>
-        </div>
-        <div class="well clearfix">
-            <div class="row-fluid control-group ">
-            <!--{% if form.from_name.errors or form.from_email.errors %}error{% endif %}
-            ">-->
-                <div class="span1">
-                    <label class="control-label">
-            <!--                 From -->
-                    </label>
-                </div>
-                <div class="span5">
-                    <!-- {{ form.from_email(placeholder=gettext('From email'), class_="span11") }}
-                    {{ render_errors(form.from_email) }} -->
-                </div>
-                <div class="span1">
-                    <label class="control-label"><!-- Name --></label>
-                </div>
-                <div class="span5">
-                    <!-- {{ form.from_name(placeholder=gettext('From name'), class_="span11") }}
-                    {{ render_errors(form.from_name) }} -->
-                </div>
-            </div >
-            <!-- {% if campaign.addressable %} -->
-            <div class="row-fluid">
-                <div class="span1">
-                    <label class="control-label">To</label>
-                </div>
-                <div class="span11">
-                    <span class="badge badge-info">
-                        %(customers_count)d customers
-                    </span>
-                <a href="campaignfilter.customers', campaign_id=campaign.id, campaign_type=campaign.campaign_type) }}">
-                    Change
-                </a>
+    <div class="row">
+        <form action="/email/453/" method="post" class="span12">
+            
+    
+        <input id="csrf_token" name="csrf_token" type="hidden" value="20130123145752##5043488211c447f998d8f7ad9ab22cfc9d069a2b">
+    
 
-
-                </div>
+            <div class="form-actions">
+                <button class="btn span2" style="position: absolute; top: -4000px;"><b>Save</b>
+                </button>
+                <button name="send" class="btn btn-danger span2" value="1"><i class="icon-white icon-warning-sign"></i><b>Send now</b></button>
+                <button id="plan-button" type="button" class="btn btn-info span2" value="1"><i class="icon-white icon-time"></i> <b>Plan later </b></button>
+                <button class="btn span2"><i class="icon icon-ok"></i> <b>Save</b></button>
+                <button name="discard" class="btn span2" value="1"><i class="icon icon-remove"></i><b>Discard</b></button>
+                <button name="test" class="btn btn-info span3" value="1"><i class="icon-user icon-white"></i><b>
+    Send me test email
+</b></button>
+                
             </div>
-            <!-- {% endif %} -->
-           <!-- {% block after_segmentation %}
-    {{ render_field(form.subject, class_="span11") }}
-    <div class="pull-right">
-        <ul class="unstyled ul-horizontal">
-            <li> <a href="campaign.template_form_url', campaign_id=campaign.id) }}">Load from URL</a></li>
-            <li>|</li>
-            <li> <a href="campaign.update_template', campaign_id=campaign.id) }}">Select template</a></li>
-        </ul>
-    </div>
-    {{ render_field(form.template, class_="span11") }}
-{% endblock %}
--->
-        </div>
-
-        <div class="accordion" id="advanced-settings">
-            <div class="accordion-group">
-                <div class="accordion-heading">
-                    <a data-toggle="collapse" data-target="#budget" data-parent="advanced-settings" href="#budget" class="accordion-toggle">
-                        Budget
-                    </a>
-                </div>
-                <div id="budget" class="accordion-body collapse">
-                    <div class="accordion-inner">
-                        <!-- {{ render_field(form.fix_price) }}
-                        {% if form.unit_price %}
-                            {{ render_field(form.unit_price) }}
-                        {% endif %}
-
-                        {% if form.units %}
-                            {{ render_field(form.units) }}
-                        {% endif %} -->
-
-                        <div id="price-total"></div>
+            <div id="copy-group" class="row-fluid control-group hide">
+                <div class="alert clearfix">
+                    <div class="span2">
+                        <label class="control-label">Copy from campaign</label>
+                    </div>
+                    <div class="span10">
+                        <input type="text" class="span12" id="search"/>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
-    <form id="copy-form" action="campaign.copy" method="post">
-        <input type="hidden" name="target" value="{{ campaign.id }}"/>
-        <input type="hidden" name="source"/>
-    </form>
+            <div id="planned-execution-group"
+                 class="row-fluid control-group ">
+                <div class="alert clearfix">
+                    <div class="span2">
+                        <label class="control-label">Planned execution</label>
+                    </div>
+                    <div class="span4">
+                        <input class="span12 datetimepicker" id="planned_execution" name="planned_execution" type="text" value="">
+                        
 
+
+                    </div>
+                    <div class="span4">
+                        <button name="plan" class="btn btn-danger span4" value="1"><i class="icon-white icon-time"></i>
+                            <b>Plan it!</b></button>
+                    </div>
+                </div>
+            </div>
+            <div class="well clearfix">
+                
+    <div class="row-fluid control-group ">
+        <div class="span1">
+            <label class="control-label">From</label>
+        </div>
+        <div class="span5">
+            <input class="span11" id="from_email" name="from_email" placeholder="From email" type="email" value="{{email.from}}">
+            
+
+
+        </div>
+        <div class="span1">
+            <label class="control-label">Name</label>
+        </div>
+        <div class="span5">
+            <input class="span11" id="from_name" name="from_name" placeholder="From name" type="text" value="{{email.fromName}}">
+            
+
+
+        </div>
+    </div >
+
+                
+                    
+    <div class="row-fluid">
+        <div class="span1">
+            <label class="control-label">To</label>
+        </div>
+        <div class="span11" style="vertical-align: top;">
+            <textarea id="customers" name="to" rows="1" style="width: 790px;">{{email.to}}</textarea>
+            
+
+
+        </div>
+    </div>
+
+                
+                
+    
+    
+        
+            <div class="control-group ">
+    <label class="control-label" for="subject"><span>Subject*</span></label>
+    <div class="controls">
+    <input class="span11" id="subject" name="subject" type="text" value="{{email.subject}}"> 
+
+
+    
+    </div>
+</div>
+        
+    
+
+    <div class="pull-right">
+        <ul class="unstyled ul-horizontal">
+            <li> <a href="/campaign/453/template/url/">Load from URL</a></li>
+            <li>|</li>
+            <li> <a href="/campaign/453/template/">Select template</a></li>
+        </ul>
+    </div>
+    
+    
+        
+            <div class="control-group ">
+    <label class="control-label" for="wysiwyg"></label>
+    <div class="controls">
+        <label class="checkbox" for="wysiwyg">
+            <input checked id="wysiwyg" name="wysiwyg" type="checkbox" value="y"> 
+            <span>Use visual editor</span>
+            
+
+
+        </label>
+        
+    </div>
+</div>
+        
+    
+
+    
+    
+        
+            <div class="control-group ">
+    <label class="control-label" for="template"><span>Message*</span></label>
+    <div class="controls">
+    <textarea class="span11" id="template" name="template" rows="20">{{email.message}}</textarea> 
+
+
+    
+    </div>
+</div>
+        
+    
+
+    <div class="row-fluid">
+        <div class="span1">
+            <label class="control-label">Control group</label>
+        </div>
+        <div class="span11" style="vertical-align: top;">
+            
+    
+        
+            <div class="control-group ">
+    <label class="control-label" for="control_group"><span>Control Group</span></label>
+    <div class="controls">
+    <input id="control_group" max="1" min="0" name="control_group" step="0.025" type="range" value="{{email.controlGroup}}"> 
+
+
+    
+        <p class="help-block">Messages are not sent to the control group. You can measure impact of the campaign.</p>
+    
+    </div>
+</div>
+        
+    
+
+            <script type="text/javascript">
+                $(function(){
+                    var value = $("<span>");
+                    $("#control_group").on("change", function() {
+                        value.html(Math.floor((parseFloat($(this).val()) * 1000))/10 + ' %');
+                    }).after(value).change();
+                });
+            </script>
+            
+
+
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span1">
+            <label class="control-label">Purchase window</label>
+        </div>
+        <div class="span11" style="vertical-align: top;">
+            <select id="window" name="window"><option selected value="7">1 week (default)</option><option value="14">2 weeks</option></select>
+            
+
+
+        </div>
+    </div>
 

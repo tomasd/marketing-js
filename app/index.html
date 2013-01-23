@@ -5,7 +5,7 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
+ <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
   <title>7segments marketing</title>
@@ -37,41 +37,45 @@
 
    -->
   <!--<link rel="stylesheet" href="less/style.css">-->
-  <link rel="stylesheet" href="css/bootstrap.css"/>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
+    <link rel="shortcut icon" href="favicon.png">
+  
+    
+
   <link rel="stylesheet" href="js/libs/jquery-ui/css/ui-lightness/jquery-ui-1.8.13.custom.css" type="text/css"/>
   <link rel="stylesheet" href="js/libs/jquery-ui-timepicker/jquery-ui-timepicker-addon.css" type="text/css"/>
   <link rel="stylesheet" href="js/libs/backbone-forms/backbone-forms.css" type="text/css"/>
   <script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
   <link rel="stylesheet" href="css/marketing.css" type="text/css"/>
   
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+
+<script src="js/libs/jquery-1.7.1.min.js"></script>
+
   <script type="text/javascript">
 //    var onload = [], onload_pjax=[];
 //    var $ = function() {
 //      onload.push(arguments);
 //      return {bind:$};
 //    };
-    window.request = {path:'{{ request.path }}'};
+    window.request = {path:'/email/453/'};
   </script>
   
-  <!-- {% block css %}
-  {% endblock css %} -->
+  
+<style>
+  #cke_message_template-template {
+    border: 0px;
+    box-shadow: none;
+  }
+    input[type='range'] {
+        margin-right: 10px;
+    }
+</style>
 </head>
 
 <body data-spy="scroll">
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-
-  <ul class="menu">
-    <li><a href="#/email">email</a></li>
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
-
-
-<!--   {% block body %}
-    {% block navbar %}-->
-      <div class="navbar navbar-fixed-top">
+  
+  <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container-fluid">
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -79,174 +83,209 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-
-      <!-- <a class="brand" href="{{ url_for('index') }}">Marketing</a>
-      <div class="btn-group pull-right">
-        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-          <i class="icon-user"></i> {{ current_user.first_name|default(current_user.email, true) }}
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="{{ url_for('account.profile') }}">{{ gettext('Profile') }}</a></li>
-          <li><a href="{{ url_for('account.change_password') }}">{{ gettext('Change password') }}</a></li>
-          <!-- {% if current_user.superuser %}
-          <li><a href="{{ url_for('account.su') }}">{{ gettext('Switch user') }}</a></li>
-          {% endif %} -->
-          <!-- <li class="divider"></li>
-          <li><a href="{{ url_for('attribute.list') }}">{{ gettext('Custom attributes') }}</a></li>
-          <li><a href="{{ url_for('segmentation.list') }}">{{ gettext('Segmentations') }}</a></li>
-          <li class="divider"></li>
-          <li><a href="{{ url_for('account.logout') }}">{{ gettext('Sign Out') }}</a></li>
-        </ul>
-      </div> -->
-
-<!--       {% if current_user.is_authenticated %}
-      <div class="nav-collapse">
-        <ul class="nav">
-                    <li>
-                        <a href="{{ url_for('campaign.dashboard') }}">Campaigns</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Customers
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{{ url_for('customer.list') }}">Customers</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="{{ url_for('rfm.transitions') }}">RFM Transitions</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Purchases
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{{ url_for('purchase.list') }}">Purchases</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="{{ url_for('product.list') }}">{{ gettext('Products') }}</a>
-                            </li>
-                            <li>
-                                <a href="{{ url_for('productcategory.list') }}">{{ gettext('Product categories') }}</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ gettext('Reports') }}<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{{ url_for('report.pivot') }}">{{ gettext('Pivot report') }}</a>
-                            </li>
-                            <li>
-                                <a href="{{ url_for('campaign.report') }}">{{ gettext('Campaign report') }}</a>
-                            </li>
-                            <li>
-                                <a href="{{ url_for('report.unsubscribe') }}">{{ gettext('Unsubsribe reason report') }}</a>
-                            </li>
-                        </ul>
-                    </li>
-        </ul>
-      </div>--><!--/.nav-collapse --> 
-    <!--   {% endif %}
-
-      {% block rightnav %}
-      {% endblock %} -->
     </div>
   </div>
 </div>
-<!--
-    {% endblock navbar %}
- -->    
     <div class="container" id="__content_container__">
-<!--   {% block container_content %}
-      {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-      {% for category, message in messages %}
-    <p class="alert {% if category == 'message' %}alert-info{% else %}alert-{{ category }}{% endif %}">
-      <a class="close" data-dismiss="alert">×</a>
-        {{ message }}
-      </p>
-      {% endfor %}
-  {% endif %}
-  
-  {% block content %}
-  {% endblock %}
-{% endwith %}
-      
-      {% block breadcrumb %}
-      {% endblock %}
-      
-      
-      {% block content %} -->
       <div ng-view></div>
-      <!-- {% endblock content %}
-  {% endblock %}   -->
 </div>
 
-    
-    <!-- {% block footer %}
-      {% include "layout/footer.html" with context %}
-    {% endblock footer %}
-  {% endblock body %} -->
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
+-->
+<script src="lib/angular/angular.js"></script>
+<script src="js/app.js"></script>
+<script src="js/services.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/directives.js"></script>
+<script src="lib/angular/angular-resource.js"></script>
+
+<!--<script src="/static/js/libs/bootstrap/bootstrap.min.js"></script>-->
+<script src="/static/bootstrap/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="/static/js/libs/pjax/jquery.pjax.js"></script>
+<script type="text/javascript" src="/static/js/libs/jquery-ui/js/jquery-ui-1.8.13.custom.min.js"></script>
+<script src="/static/js/libs/jquery-ui-timepicker/jquery-ui-timepicker-addon.js"></script>
+<script src="/static/js/libs/underscore/underscore.js"></script>
+<script src="/static/js/libs/backbone/backbone.js"></script>
+<script src="/static/js/libs/backbone-relational/backbone-relational.js"></script>
+<script src="/static/js/libs/backbone-forms/backbone-forms.js"></script>
+<script src="/static/js/libs/backbone-forms/templates/bootstrap.js"></script>
+<script src="/static/js/libs/backbone-forms/jquery-ui-editors.js"></script>
+<script src="/static/js/libs/jquery.ezmark.min.js"></script>
+<script src="/static/js/script.js"></script>
 
 
-  <!--<script src="js/libs/bootstrap/bootstrap.min.js"></script>-->
-  <script src="bootstrap/js/bootstrap.js"></script>
 
-  <script type="text/javascript" src="js/libs/pjax/jquery.pjax.js"></script>
-  <script type="text/javascript" src="js/libs/jquery-ui/js/jquery-ui-1.8.13.custom.min.js"></script>
-  <script src="js/libs/jquery-ui-timepicker/jquery-ui-timepicker-addon.js"></script>
-  <script src="js/libs/underscore/underscore.js"></script>
-  <script src="js/libs/backbone/backbone.js"></script>
-  <script src="js/libs/backbone-relational/backbone-relational.js"></script>
-  <script src="js/libs/backbone-forms/backbone-forms.js"></script>
-  <script src="js/libs/backbone-forms/templates/bootstrap.js"></script>
-  <script src="js/libs/backbone-forms/jquery-ui-editors.js"></script>
-  <script src="js/script.js"></script>
 
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
-  -->
-  <script src="lib/angular/angular.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/services.js"></script>
-  <script src="js/controllers.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/directives.js"></script>
 
-  <!-- {% block head %}
-  {% endblock %}
+  
+    <script type="text/javascript">
+        $(function () {
+            
+            $("#plan-button").click(function () {
+                $("#planned-execution-group").toggle()
+            });
+        });
+    </script>
 
-  {% block javascript %}
-  {% endblock javascript %} -->
+    <script type="text/javascript">
+        $(function () {
+            $("#copy-button").click(function () {
+                $("#copy-group").toggle();
+            });
+            $("#search").autocomplete({
+                source:function (request, response) {
+                    var data = {q:request.term, campaign_type:'email'};
+                    $.get("/_campaign-search/", data, function (data) {
+                        response($.map(data, function (item) {
+                            return {value:item.id, label:item.name};
+                        }));
+                    });
+                },
+                select:function (event, ui) {
+                    $("#copy-form").find(":input[name='source']").val(ui.item.value);
+                    $("#copy-form").submit();
+                    return false;
+                }
+            });
+        });
+    </script>
 
-  <!-- <script>
-    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g,s)}(document,'script'));
-  </script> -->
+    <script type="text/javascript">
+        $(function () {
+            $("#fix_price, #unit_price, #units").on("change keyup click",function () {
+                var totalPrice = 0;
+                $("#fix_price, #unit_price, #units").each(function (i, item) {
+                    var price = parseInt($(item).val());
+                    if (price) {
+                        totalPrice += price;
+                    }
+                });
+                $("#price-total").html("Total: " + totalPrice)
+            }).change();
+        });
+    </script>
 
-  <!-- Piwik --> 
   <script type="text/javascript">
-  var pkBaseURL = (("https:" == document.location.protocol) ? "https://t.crossroad.sk/" : "http://t.crossroad.sk/");
-  document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-  </script><script type="text/javascript">
-  try {
-  var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 4);
-  piwikTracker.trackPageView();
-  piwikTracker.enableLinkTracking();
-  } catch( err ) {}
-  </script><noscript><p><img src="http://t.crossroad.sk/piwik.php?idsite=4" style="border:0" alt="" /></p></noscript>
-  <!-- End Piwik Tracking Code -->
+    var PLACEHOLDER_ITEMS = [["FNAME - First name", "FNAME"], ["LNAME - Last name", "LNAME"], ["Email", "Email"], ["first_name", "first_name"], ["last_name", "last_name"], ["email", "email"], ["MC:SUBJECT - Message subject", "MC:SUBJECT"], ["LIST:COMPANY - Company name", "LIST:COMPANY"], ["COMPANY - Company name", "COMPANY"], ["CURRENT_YEAR - Current year", "CURRENT_YEAR"], ["TWITTER:PROFILEURL - URL for twitter profile", "TWITTER:PROFILEURL"], ["FACEBOOK:PROFILEURL - URL for facebook profile", "FACEBOOK:PROFILEURL"]];
+  </script>
+  <script type="text/javascript" src="/static/js/libs/ckeditor-3.6.4/ckeditor.js"></script>
+  <script type="text/javascript" src="/static/js/libs/ckeditor-3.6.4/adapters/jquery.js"></script>
+  <script type="text/javascript" src="/static/js/libs/textextjs_src.js"></script>
+
+    <script type="text/javascript">
+        var editor = null;
+        $(function() {
+            $("#wysiwyg").on("change", function() {
+                if ($(this).is(":checked")) {
+                    editor = $("textarea#template").ckeditor({height: '600px', width:'850px'});
+                } else {
+                    if (editor) {
+                        $('textarea#template').ckeditor(function(){
+                            this.destroy();
+                        });
+                        editor = null;
+                    }
+                }
+            }).change();
+        });
+    </script>
+    <script type="text/javascript">
+    $(function() {
+        var customers_tag = {
+            label: "8 customers",
+            customers: true
+        };
+        var value = JSON.parse($("#customers").val());
+        $("#customers").val("");
+        $("#customers").after('<a href="#" id="add_filter">Add filter</a>');
+
+
+        $('#customers').textext({
+            plugins : 'tags prompt',
+            prompt: "Insert email address and press enter to add it or click on any existing to change",
+            ext: {
+                itemManager: {
+                    stringToItem: function(str) {
+                        return {label:str};
+                    },
+                    itemToString: function(item) {
+                        return item['label'];
+                    },
+                    compareItems: function(item1, item2)
+                    {
+                        if (item1==undefined || item2==undefined) {
+                            return false;
+                        }
+                        if (item1.textTag) {
+                            item1 = item1.textTag;
+                        }
+                        if (item2.textTag) {
+                            item2 = item2.textTag;
+                        }
+
+                        return item1.label == item2.label;
+                    }
+                },
+                tags: {
+                    removeTag: function(tag) {
+                        if(tag instanceof $)
+                        {
+                            element = tag;
+                            tag = tag.data($.fn.textext.TextExtTags.prototype.CSS_TAG);
+                        }
+                        if (tag.textTag && tag.textTag.customers) {
+                            $("#add_filter").show();
+                        }
+
+                        $.fn.textext.TextExtTags.prototype.removeTag.apply(this, arguments);
+                    }
+                }
+            }
+        }).on(
+            'tagClick',
+            function(e, tag, value, callback){
+                if (value.customers) {
+                    document.location = "\/email\/475\/customers1\/";
+                    return false;
+                } else {
+                    var newValue = window.prompt('Change email', value.label);
+
+                    if(newValue)
+                        callback({label:newValue});
+                }
+            });
+
+        $("#add_filter").on('click', function() {
+            $('#customers').textext()[0].tags().addTags([ customers_tag ]);
+            $(this).hide();
+            return false;
+        });
+
+        $('#customers').textext()[0].tags().addTags(value)
+
+
+        var show_add_filter = false;
+        for (var item in value) {
+            if (item.customers) {
+                show_add_filter = true;
+            }
+        }
+        $("add_filter").toggle(show_add_filter);
+    });
+    </script>
+
+
+
+<!-- <script>
+  var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script> -->
+
   
 </body>
 </html>
