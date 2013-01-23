@@ -2,8 +2,10 @@
 
 /* Controllers */
 
-function EmailCtrl() {}
-EmailCtrl.$inject = [];
+function EmailCtrl($scope, Email) {    
+    $scope.email = Email.get();
+}
+EmailCtrl.$inject = ['$scope', 'Email'];
 
 
 function MyCtrl1() {}
