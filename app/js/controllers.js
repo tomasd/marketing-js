@@ -2,10 +2,11 @@
 
 /* Controllers */
 
-function EmailCtrl($scope, Email) {    
+function EmailCtrl($scope, Email, CustomerFilters) {    
     $scope.email = Email.get();
+    $scope.customerFilters = CustomerFilters.query();
 }
-EmailCtrl.$inject = ['$scope', 'Email'];
+EmailCtrl.$inject = ['$scope', 'Email', 'CustomerFilters'];
 
 
 function MyCtrl1() {}
