@@ -22,6 +22,16 @@ function EmailCtrl($scope, Email, CustomerFilters) {
     $scope.AddOr = function(attribute, operator, value) {
         $scope.filterList.push([]);
     }
+
+    $scope.RemoveFilter = function(groupIndex, index) {
+      //remove item from list
+      $scope.filterList[groupIndex].splice(index,1);
+    };
+
+    $scope.RemoveOr = function(index) {
+      //merge lists  
+      $scope.filterList.splice(index-1,2,$scope.filterList[index-1].concat($scope.filterList[index]));
+    }
 }
 EmailCtrl.$inject = ['$scope', 'Email', 'CustomerFilters'];
 

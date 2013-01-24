@@ -234,15 +234,13 @@
                 <tr ng-hide="$first">
                     <td colspan="5" style="text-align: center;">
                         OR
-                        <div class="pull-right">
-                            <form action="/email/475/customers/2/delete/"  class="btn-form" method="post">
-                                <button class="btn"><i class="icon icon-remove"></i></button>
-                            </form>
+                        <div class="pull-right">                            
+                            <button class="btn" ng-click="RemoveOr($index)"><i class="icon icon-remove"></i></button>
                         </div>
                     </td>
                 </tr>       
                 <tr ng-show="itemgroup.length > 0">
-                    <td rowspan="{{itemgroup.length + 1}}"> 1</td>                                       
+                    <td rowspan="{{itemgroup.length + 1}}"> 1</td>
                 </tr>                
                 <tr  ng-repeat="item in itemgroup">                    
                     <td>
@@ -257,10 +255,8 @@
                         </a>
                     </td>
                     <td>
-                        <div class="pull-right">
-                            <form action="/email/475/customers/0/delete/"  class="btn-form" method="post">
-                                <button class="btn"><i class="icon icon-remove"></i></button>
-                            </form>
+                        <div class="pull-right">                            
+                                <button class="btn" ng-click="RemoveFilter($parent.$index,$index)"><i class="icon icon-remove"></i></button>
                         </div>
                     </td>
                 </tr>    
