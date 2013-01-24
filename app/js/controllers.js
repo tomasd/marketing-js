@@ -7,6 +7,11 @@ function EmailCtrl($scope, Email, CustomerFilters) {
     $scope.customerFilters = CustomerFilters.query();
     $scope.filterList = [[]];
 
+    $scope.SetFilter = function()
+    {
+        $scope.email.to = $scope.filterList;    
+    }
+
     $scope.SetCurrentFilter = function (groupIndex, attributeIndex, defaultOperator, defaultValue) {
         $scope.currentFilter = $scope.customerFilters[groupIndex].attributes[attributeIndex];
         $scope.currentFilterProperties = {
