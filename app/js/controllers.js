@@ -15,10 +15,13 @@ function EmailCtrl($scope, Email, CustomerFilters) {
         }
     };
 
-    $scope.AddFilter = function(attribute, operator, value)
-    {
+    $scope.AddFilter = function(attribute, operator, value) {
         $scope.filterList[$scope.filterList.length-1].push({"attribute" : attribute, "operator" : operator, "value" : value});
     };
+
+    $scope.AddOr = function(attribute, operator, value) {
+        $scope.filterList.push([]);
+    }
 }
 EmailCtrl.$inject = ['$scope', 'Email', 'CustomerFilters'];
 
