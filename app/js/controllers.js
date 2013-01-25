@@ -9,6 +9,12 @@ EmailController.$inject = ['$scope', 'Email'];
 
 function FilterController($scope, CustomerFilters) {        
     $scope.customerFilters = CustomerFilters.query();
+    // $scope.filterList = [[{"attribute" : {
+    //         "id":"first-name",
+    //         "label":"First name",
+    //         "operators":["=", "LIKE"],
+    //         "type":"string"
+    //     }, "operator" : "test", "value" : 47}]];
     $scope.filterList = [[]];
 
     $scope.SetFilter = function()//todo kam to ma pichnut
@@ -17,6 +23,7 @@ function FilterController($scope, CustomerFilters) {
     }    
     
     $scope.SetCurrentFilter = function (groupIndex, attributeIndex, defaultOperator, defaultValue) {
+        $scope.addCondition = $scope.customerFilters[groupIndex].attributes[attributeIndex].label;
         $scope.currentFilter = $scope.customerFilters[groupIndex].attributes[attributeIndex];
         $scope.currentFilterProperties = {
         "selectedOperator" : $scope.currentFilter.operators[0],
@@ -25,7 +32,10 @@ function FilterController($scope, CustomerFilters) {
     };
 
     $scope.AddFilter = function(attribute, operator, value) {
-        $scope.filterList[$scope.filterList.length-1].push({"attribute" : attribute, "operator" : operator, "value" : value});
+        $scope.filterList[$scope.filterList.length-1].push({"attribute" : attribute, "operator" : operator, "value" : value});        
+
+        $scope.addCondition = "";
+        $scope.currentFilter = null;
     };
 
     $scope.AddOr = function(attribute, operator, value) {
