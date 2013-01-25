@@ -234,7 +234,9 @@
                 <tr ng-hide="$first">
                     <td colspan="5" style="text-align: center;">
                         OR
-                        <div class="pull-right">                            
+                        <div class="pull-right">
+                            <button class="btn" ng-click="MoveOr($index,-1)" ng-hide="$index==1 &amp;&amp; filterList[0].length==0"><i class="icon icon-arrow-up"></i></button>            
+                            <button class="btn" ng-click="MoveOr($index,1)" ng-hide="$last &amp;&amp; filterList[$index].length==0"><i class="icon icon-arrow-down"></i></button>
                             <button class="btn" ng-click="RemoveOr($index)"><i class="icon icon-remove"></i></button>
                         </div>
                     </td>
@@ -255,8 +257,10 @@
                         </a>
                     </td>
                     <td>
-                        <div class="pull-right">                            
-                                <button class="btn" ng-click="RemoveFilter($parent.$index,$index)"><i class="icon icon-remove"></i></button>
+                        <div class="pull-right">                
+                            <button class="btn" ng-click="MoveFilter($parent.$index,$index,-1)" ng-hide="$first &amp;&amp; $parent.$first"><i class="icon icon-arrow-up"></i></button>            
+                            <button class="btn" ng-click="MoveFilter($parent.$index,$index,1)" ng-hide="$last &amp;&amp; $parent.$last"><i class="icon icon-arrow-down"></i></button>
+                            <button class="btn" ng-click="RemoveFilter($parent.$index,$index)"><i class="icon icon-remove"></i></button>
                         </div>
                     </td>
                 </tr>    
