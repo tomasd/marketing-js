@@ -57,30 +57,30 @@
                     <td colspan="3">Total: 2 customers</td>
                     <td colspan="2" class="span6">
                         <form class="form-inline">
-                        <div class="span4">                                                                            
-                            <div class="dropdown">                                
-                                <input id="addCondition" class="dropdown-toggle span12" type="text" placeholder="Add condition" ng-model="addCondition" data-toggle="dropdown"/>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <li ng-show="(['or'] | filter:addCondition).length>0" ng-click="AddOr();">
-                                        <a href="javascript:void;"><b>OR</b></a>
-                                    </li>
-                                    <div ng-repeat="filtergroup in customerFilters">
-                                    <li class="nav-header">{{filtergroup.group}}</li>                    
-                                    <li ng-repeat="attribute in filtergroup.attributes |filter:addCondition" ng-click="SetCurrentFilter($parent.$index, $index);">
-                                        <a href="javascript:void;">{{attribute.label}}</a>
-                                    </li>
-                                    </div>     
-                                </ul>
-                            </div>                                                    
-                        </div>
-                        <div class="span3" ng-show="currentFilter.operators.length">
-                            <select id="operator" class="span12" ng-model="currentFilterProperties.selectedOperator" ng-options="i for i in currentFilter.operators"></select>
-                        </div>
-                        <div class="span3" ng-show="currentFilter.operators.length">
-                            <input ng-model="currentFilterProperties.value" id="value" name="value" size="15" type="text" value="" class="span12" placeholder="Value">
-                        </div>
-                        <button ng-show="currentFilter.operators.length" class="btn btn-primary span2" ng-click="AddFilter(currentFilter, currentFilterProperties.selectedOperator, currentFilterProperties.value)">Add</button>
-                    </form>
+                            <div class="span4">                                                                            
+                                <div class="dropdown">                                
+                                    <input id="addCondition" class="dropdown-toggle span12" type="text" placeholder="Add condition" ng-model="addCondition" data-toggle="dropdown" ng-enter="enterFirstFilter()"/>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" id="addConditionDropDown">
+                                        <li ng-show="(['or'] | filter:addCondition).length>0" ng-click="AddOr()">
+                                            <a href="javascript:"><b>OR</b></a>
+                                        </li>
+                                        <div ng-repeat="filtergroup in customerFilters">
+                                            <li class="nav-header">{{filtergroup.group}}</li>                    
+                                            <li ng-repeat="attribute in filtergroup.attributes |filter:addCondition" ng-click="SetCurrentFilter(attribute)">
+                                                <a href="javascript:">{{attribute.label}}</a>
+                                            </li>
+                                        </div>     
+                                    </ul>
+                                </div>                                                    
+                            </div>
+                            <div class="span3" ng-show="currentFilter.operators.length">
+                                <select id="operator" class="span12" ng-model="currentFilterProperties.selectedOperator" ng-options="i for i in currentFilter.operators"></select>
+                            </div>
+                            <div class="span3" ng-show="currentFilter.operators.length">
+                                <input ng-model="currentFilterProperties.value" id="value" name="value" size="15" type="text" value="" class="span12" placeholder="Value">
+                            </div>
+                            <input type="submit" ng-show="currentFilter.operators.length" class="btn btn-primary span2" value="Add"  ng-click="AddFilter(currentFilter, currentFilterProperties.selectedOperator, currentFilterProperties.value)"/>
+                        </form>
                     </td>
                 </tr>
             </tfoot>

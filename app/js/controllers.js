@@ -7,7 +7,7 @@ function EmailController($scope, Email) {
 }
 EmailController.$inject = ['$scope', 'Email'];
 
-function FilterController($scope, CustomerFilters) {        
+function FilterController($scope, CustomerFilters, $filter) {        
     $scope.customerFilters = CustomerFilters.query();
     // $scope.filterList = [[{"attribute" : {
     //         "id":"first-name",
@@ -22,24 +22,39 @@ function FilterController($scope, CustomerFilters) {
         $scope.email.to = $scope.filterList;    
     }    
     
-    $scope.SetCurrentFilter = function (groupIndex, attributeIndex, defaultOperator, defaultValue) {
-        $scope.addCondition = $scope.customerFilters[groupIndex].attributes[attributeIndex].label;
-        $scope.currentFilter = $scope.customerFilters[groupIndex].attributes[attributeIndex];
+    $scope.SetCurrentFilter = function (attribute, defaultOperator, defaultValue) {
+        $scope.addCondition = attribute.label;
+        $scope.currentFilter = attribute;
         $scope.currentFilterProperties = {
         "selectedOperator" : $scope.currentFilter.operators[0],
         "value" : ""
         }
     };
 
-    $scope.AddFilter = function(attribute, operator, value) {
-        $scope.filterList[$scope.filterList.length-1].push({"attribute" : attribute, "operator" : operator, "value" : value});        
+    $scope.enterFirstFilter = function()
+    {        
+        // var attributes;
+        // attributes= $filter('filter')(['OR', $scope.customerFilters], $scope.addCondition);
 
-        $scope.addCondition = "";
-        $scope.currentFilter = null;
+        // if(attributes!='OR')
+        //     $scope.SetCurrentFilter(attributes[0]);
+        // else
+        //     $scope.AddOr();
+    }
+
+    $scope.AddFilter = function(attribute, operator, value) {
+        // alert('baf');
+        this.filterList[$scope.filterList.length-1].push({"attribute" : attribute, "operator" : operator, "value" : value});        
+
+        this.addCondition = "";
+        this.currentFilter = null;
     };
 
     $scope.AddOr = function(attribute, operator, value) {
         $scope.filterList.push([]);
+
+        this.addCondition = "";
+        this.currentFilter = null;
     }
 
     $scope.RemoveFilter = function(groupIndex, index) {
@@ -101,4 +116,4 @@ function FilterController($scope, CustomerFilters) {
         }
     }
 }
-FilterController.$inject = ['$scope', 'CustomerFilters'];
+FilterController.$inject = ['$scope', 'CustomerFilters', '$filter'];

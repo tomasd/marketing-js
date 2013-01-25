@@ -3,9 +3,11 @@
 /* Directives */
 
 
-angular.module('myApp.directives', []).
-  directive('appVersion', ['version', function(version) {
+angular.module('marketingjs.directives', []).
+  directive('ngEnter', function() {
     return function(scope, elm, attrs) {
-      elm.text(version);
+        elm.bind('keypress', function(e) {
+            if (e.charCode === 13) scope.$apply(attrs.ngEnter);
+        });
     };
-  }]);
+});    
