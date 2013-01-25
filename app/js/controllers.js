@@ -2,16 +2,20 @@
 
 /* Controllers */
 
-function EmailCtrl($scope, Email, CustomerFilters) {    
+function EmailController($scope, Email) {    
     $scope.email = Email.get();
+}
+EmailController.$inject = ['$scope', 'Email'];
+
+function FilterController($scope, CustomerFilters) {        
     $scope.customerFilters = CustomerFilters.query();
     $scope.filterList = [[]];
 
-    $scope.SetFilter = function()
+    $scope.SetFilter = function()//todo kam to ma pichnut
     {
         $scope.email.to = $scope.filterList;    
-    }
-
+    }    
+    
     $scope.SetCurrentFilter = function (groupIndex, attributeIndex, defaultOperator, defaultValue) {
         $scope.currentFilter = $scope.customerFilters[groupIndex].attributes[attributeIndex];
         $scope.currentFilterProperties = {
@@ -87,13 +91,4 @@ function EmailCtrl($scope, Email, CustomerFilters) {
         }
     }
 }
-EmailCtrl.$inject = ['$scope', 'Email', 'CustomerFilters'];
-
-
-function MyCtrl1() {}
-MyCtrl1.$inject = [];
-
-
-function MyCtrl2() {
-}
-MyCtrl2.$inject = [];
+FilterController.$inject = ['$scope', 'CustomerFilters'];
