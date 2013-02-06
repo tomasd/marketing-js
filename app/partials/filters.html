@@ -56,23 +56,11 @@
                 <tr>
                     <td colspan="3">Total: 2 customers</td>
                     <td colspan="2" class="span6">
-                        <form class="form-inline">
-                            <div class="span3">                                                                            
-                                <div class="dropdown">                                
-                                    <input id="addCondition" class="dropdown-toggle span12" type="text" placeholder="Add condition" ng-model="addCondition" data-toggle="dropdown" ng-enter="enterFirstFilter()"/>
-                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" id="addConditionDropDown">
-                                        <li ng-show="(['or'] | filter:addCondition).length>0" ng-click="AddOr()">
-                                            <a href="javascript:"><b>OR</b></a>
-                                        </li>
-                                        <div ng-repeat="filtergroup in customerFilters">
-                                            <li class="nav-header">{{filtergroup.group}}</li>                    
-                                            <li ng-repeat="attribute in filtergroup.attributes |filter:addCondition" ng-click="SetCurrentFilter(attribute)">
-                                                <a href="javascript:">{{attribute.label}}</a>
-                                            </li>
-                                        </div>     
-                                    </ul>
-                                </div>                                                    
+                        <form class="form-inline">                            
+                            <div class="span3">
+                                <select id="addCondition" class="dropdown-toggle span12" type="text" placeholder="Add condition" ng-model="addCondition" ng-options="attribute.label group by attribute.group for attribute in customerFilters" ng-change="SetCurrentFilter()"></select>                                
                             </div>
+
                             <div class="span3" ng-show="currentFilter.operators.length">
                                 <select id="operator" class="span12" ng-model="currentFilterProperties.selectedOperator" ng-options="i for i in currentFilter.operators"></select>
                             </div>

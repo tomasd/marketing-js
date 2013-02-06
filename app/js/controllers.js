@@ -22,25 +22,20 @@ function FilterController($scope, CustomerFilters, $filter) {
         $scope.email.to = $scope.filterList;    
     }    
     
-    $scope.SetCurrentFilter = function (attribute, defaultOperator, defaultValue) {
-        $scope.addCondition = attribute.label;
-        $scope.currentFilter = attribute;
+    $scope.SetCurrentFilter = function (defaultOperator, defaultValue) {        
+        if($scope.addCondition.id=="or")
+        {
+            $scope.AddOr();
+            return;
+        }
+
+        // $scope.addCondition = attribute.label;
+        $scope.currentFilter = $scope.addCondition;
         $scope.currentFilterProperties = {
-        "selectedOperator" : $scope.currentFilter.operators[0],
-        "value" : ""
+            "selectedOperator" : $scope.currentFilter.operators[0],
+            "value" : ""
         }
     };
-
-    $scope.enterFirstFilter = function()
-    {        
-        // var attributes;
-        // attributes= $filter('filter')(['OR', $scope.customerFilters], $scope.addCondition);
-
-        // if(attributes!='OR')
-        //     $scope.SetCurrentFilter(attributes[0]);
-        // else
-        //     $scope.AddOr();
-    }
 
     $scope.ResetFilterForm = function()
     {
@@ -48,14 +43,13 @@ function FilterController($scope, CustomerFilters, $filter) {
         this.currentFilter = null;
     }
 
-    $scope.AddFilter = function(attribute, operator, value) {
-        // alert('baf');
+    $scope.AddFilter = function(attribute, operator, value) {        
         this.filterList[$scope.filterList.length-1].push({"attribute" : attribute, "operator" : operator, "value" : value});        
 
         $scope.ResetFilterForm()
     };
 
-    $scope.AddOr = function(attribute, operator, value) {
+    $scope.AddOr = function(attribute, operator, value) {        
         $scope.filterList.push([]);
 
         $scope.ResetFilterForm();
