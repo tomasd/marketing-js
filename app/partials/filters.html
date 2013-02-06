@@ -58,7 +58,7 @@
                     <td colspan="2" class="span6">
                         <form class="form-inline">                            
                             <div class="span3">
-                                <select ui-select2 id="addCondition" class="dropdown-toggle span12" type="text" placeholder="Add condition" ng-model="addCondition" ng-change="SetCurrentFilter()" data-placeholder="-- Select One --">
+                                <select ui-select2 id="addCondition" class="dropdown-toggle span12" type="text" placeholder="Add condition" ng-model="addCondition" ng-change="SetCurrentFilter()">
                                     <option></option>
                                     <option ng-repeat="attribute in customerFilters" value="{{attribute}}">
                                         {{attribute.label}}
