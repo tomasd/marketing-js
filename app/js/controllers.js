@@ -42,19 +42,23 @@ function FilterController($scope, CustomerFilters, $filter) {
         //     $scope.AddOr();
     }
 
+    $scope.ResetFilterForm = function()
+    {
+        this.addCondition = "";
+        this.currentFilter = null;
+    }
+
     $scope.AddFilter = function(attribute, operator, value) {
         // alert('baf');
         this.filterList[$scope.filterList.length-1].push({"attribute" : attribute, "operator" : operator, "value" : value});        
 
-        this.addCondition = "";
-        this.currentFilter = null;
+        $scope.ResetFilterForm()
     };
 
     $scope.AddOr = function(attribute, operator, value) {
         $scope.filterList.push([]);
 
-        this.addCondition = "";
-        this.currentFilter = null;
+        $scope.ResetFilterForm();
     }
 
     $scope.RemoveFilter = function(groupIndex, index) {

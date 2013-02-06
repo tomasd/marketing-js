@@ -57,7 +57,7 @@
                     <td colspan="3">Total: 2 customers</td>
                     <td colspan="2" class="span6">
                         <form class="form-inline">
-                            <div class="span4">                                                                            
+                            <div class="span3">                                                                            
                                 <div class="dropdown">                                
                                     <input id="addCondition" class="dropdown-toggle span12" type="text" placeholder="Add condition" ng-model="addCondition" data-toggle="dropdown" ng-enter="enterFirstFilter()"/>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" id="addConditionDropDown">
@@ -79,7 +79,8 @@
                             <div class="span3" ng-show="currentFilter.operators.length">
                                 <input ng-model="currentFilterProperties.value" id="value" name="value" size="15" type="text" value="" class="span12" placeholder="Value">
                             </div>
-                            <input type="submit" ng-show="currentFilter.operators.length" class="btn btn-primary span2" value="Add"  ng-click="AddFilter(currentFilter, currentFilterProperties.selectedOperator, currentFilterProperties.value)"/>
+                            <button type="submit" ng-show="currentFilter.operators.length" class="btn btn-primary span1" ng-click="AddFilter(currentFilter, currentFilterProperties.selectedOperator, currentFilterProperties.value)">Add</button>
+                            <button type="reset" ng-show="currentFilter.operators.length" class="btn span2" ng-click="ResetFilterForm()">Cancel</button>
                         </form>
                     </td>
                 </tr>
