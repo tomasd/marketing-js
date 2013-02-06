@@ -58,8 +58,13 @@
                     <td colspan="2" class="span6">
                         <form class="form-inline">                            
                             <div class="span3">
-                                <select id="addCondition" class="dropdown-toggle span12" type="text" placeholder="Add condition" ng-model="addCondition" ng-options="attribute.label group by attribute.group for attribute in customerFilters" ng-change="SetCurrentFilter()"></select>                                
-                            </div>
+                                <select ui-select2 id="addCondition" class="dropdown-toggle span12" type="text" placeholder="Add condition" ng-model="addCondition" ng-change="SetCurrentFilter()" data-placeholder="-- Select One --">
+                                    <option></option>
+                                    <option ng-repeat="attribute in customerFilters" value="{{attribute}}">
+                                        {{attribute.label}}
+                                    </option>
+                                </select>
+                            </div>                            
 
                             <div class="span3" ng-show="currentFilter.operators.length">
                                 <select id="operator" class="span12" ng-model="currentFilterProperties.selectedOperator" ng-options="i for i in currentFilter.operators"></select>
