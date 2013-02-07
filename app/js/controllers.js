@@ -23,14 +23,14 @@ function FilterController($scope, CustomerFilters, $filter) {
     }    
     
     $scope.SetCurrentFilter = function (defaultOperator, defaultValue) {        
-        if($scope.addCondition.id=="or")
+        if($scope.addCondition=="or")
         {
             $scope.AddOr();
             return;
         }
 
         // $scope.addCondition = attribute.label;
-        $scope.currentFilter = $scope.addCondition;
+        $scope.currentFilter = JSON.parse($scope.addCondition);
         $scope.currentFilterProperties = {
             "selectedOperator" : $scope.currentFilter.operators[0],
             "value" : ""

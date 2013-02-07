@@ -60,9 +60,12 @@
                             <div class="span3">
                                 <select ui-select2 id="addCondition" class="dropdown-toggle span12" type="text" placeholder="Add condition" ng-model="addCondition" ng-change="SetCurrentFilter()">
                                     <option></option>
-                                    <option ng-repeat="attribute in customerFilters" value="{{attribute}}">
-                                        {{attribute.label}}
-                                    </option>
+                                    <option value="or">OR</option>
+                                    <optgroup ng-repeat="filterGroup in customerFilters" label="{{filterGroup.group}}">
+                                        <option ng-repeat="attribute in filterGroup.attributes" value="{{attribute}}">
+                                            {{attribute.label}}
+                                        </option>
+                                    </optgroup>
                                 </select>
                             </div>                            
 

@@ -1,185 +1,174 @@
 [
-    {
-        "id":"or",
-        "label":"OR",
-        "operators":[],
-        "group" : "",
-        "type":"or"
-    },
-    {
-        "id":"first-name",
-        "label":"First name",
-        "operators":["=", "LIKE"],
-        "group" : "CUSTOMER",
-        "type":"string"
-    },
-    {
-        "id":"last-name",
-        "label":"Last name",
-        "operators":["=", "LIKE"],
-        "group" : "CUSTOMER",
-        "type":"string"
-    },
-    {
-        "id":"email",
-        "label":"Email",
-        "operators":["=", "LIKE"],
-        "group" : "CUSTOMER",
-        "type":"string"
-    },
-    {
-        "id":"phone",
-        "label":"Phone",
-        "operators":["=", "LIKE"],
-        "group" : "CUSTOMER",
-        "type":"string"    
-    },    
-    {
-        "id":"position",
-        "label":"Position",
-        "operators":["=", "LIKE"],
-        "group" : "ATTRIBUTE",
-        "type":"string"
-    },
-    {
-        "id":"salary",
-        "label":"Salary",
-        "operators":["=", "LIKE"],
-        "group" : "ATTRIBUTE",
-        "type":"string"
-    },
-    {
-        "id":"team",
-        "label":"Team",
-        "operators":["=", "LIKE"],
-        "group" : "ATTRIBUTE",
-        "type":"string"
-    },
-
-    {
-        "id":"first-purchase",
-        "label":"First purchase",
-        "operators":["=", "LIKE"],
-        "group" : "AGGREGATE",
-        "type":"string"
-    },
-    {
-        "id":"days-from-first-purchase",
-        "label":"Days from first purchase",
-        "operators":["=", "LIKE"],
-        "group" : "AGGREGATE",
-        "type":"string"
-    },
-    {
-        "id":"last-purchase",
-        "label":"Last purchase",
-        "operators":["=", "LIKE"],
-        "group" : "AGGREGATE",
-        "type":"string"
-    },
-    {
-        "id":"days-from-last-purchase",
-        "label":"Days from last purchase",
-        "operators":["=", "LIKE"],
-        "group" : "AGGREGATE",
-        "type":"string"
-    },
-    {
-        "id":"first-request",
-        "label":"First request",
-        "operators":["=", "LIKE"],
-        "group" : "AGGREGATE",
-        "type":"string"
-    },
-    {
-        "id":"days-from-first-request",
-        "label":"Days from first request",
-        "operators":["=", "LIKE"],
-        "group" : "AGGREGATE",
-        "type":"string"
-    },
-    {
-        "id":"last-request",
-        "label":"Last request",
-        "operators":["=", "LIKE"],
-        "group" : "AGGREGATE",
-        "type":"string"
-    },
-    {
-        "id":"days-from-last-request",
-        "label":"Days from last request",
-        "operators":["=", "LIKE"],
-        "group" : "AGGREGATE",
-        "type":"string"
-    },
-    {
-        "id":"first-email",
-        "label":"First email",
-        "operators":["=", "LIKE"],
-        "group" : "AGGREGATE",
-        "type":"string"
-    },
-    {
-        "id":"days-from-first-email",
-        "label":"Days from first email",
-        "operators":["=", "LIKE"],
-        "group" : "AGGREGATE",
-        "type":"string"
-    },
-    {
-        "id":"last-email",
-        "label":"Last email",
-        "operators":["=", "LIKE"],
-        "group" : "AGGREGATE",
-        "type":"string"
-    },
-    {
-        "id":"days-from-last-email",
-        "label":"Days from last email",
-        "operators":["=", "LIKE"],
-        "group" : "AGGREGATE",
-        "type":"string"
-    },
-    {
-        "id":"price-sum",
-        "label":"Price sum",
-        "operators":["=", "LIKE"],
-        "group" : "AGGREGATE",
-        "type":"string"
-    },
-    {
-        "id":"emails-opened",
-        "label":"Emails opened",
-        "operators":["=", "LIKE"],
-        "group" : "AGGREGATE",
-        "type":"string"
-    },
-    {
-        "id":"items-count",
-        "label":"Items count",
-        "operators":["=", "LIKE"],
-        "group" : "AGGREGATE",
-        "type":"string"
-    },
-    {
-        "id":"requests-count",
-        "label":"Requests count",
-        "operators":["=", "LIKE"],
-        "group" : "AGGREGATE",
-        "type":"string"
-    },
-    {
-        "id":"email-requests-count",
-        "label":"Email requests count",
-        "operators":["=", "LIKE"],
-        "group" : "AGGREGATE",
-        "type":"string"
-    },
-    {
-        "id":"unique-date-ount",
-        "label":"Unique dates count",
-        "operators":["=", "LIKE"],
-        "group" : "AGGREGATE",
-        "type":"string"
-    }    
+{
+    "group" : "CUSTOMER",
+    "attributes":
+    [
+        {
+            "id":"first-name",
+            "label":"First name",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"last-name",
+            "label":"Last name",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"email",
+            "label":"Email",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"phone",
+            "label":"Phone",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        }
+    ]
+},
+{
+    "group" : "ATTRIBUTE",
+    "attributes":
+    [
+        {
+            "id":"position",
+            "label":"Position",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"salary",
+            "label":"Salary",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"team",
+            "label":"Team",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        }
+    ]
+},
+{
+    "group" : "SEGMENTATION",
+    "attributes":[]
+},
+{
+    "group" : "AGGREGATE",
+    "attributes":
+    [
+        {
+            "id":"first-purchase",
+            "label":"First purchase",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"days-from-first-purchase",
+            "label":"Days from first purchase",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"last-purchase",
+            "label":"Last purchase",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"days-from-last-purchase",
+            "label":"Days from last purchase",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"first-request",
+            "label":"First request",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"days-from-first-request",
+            "label":"Days from first request",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"last-request",
+            "label":"Last request",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"days-from-last-request",
+            "label":"Days from last request",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"first-email",
+            "label":"First email",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"days-from-first-email",
+            "label":"Days from first email",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"last-email",
+            "label":"Last email",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"days-from-last-email",
+            "label":"Days from last email",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"price-sum",
+            "label":"Price sum",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"emails-opened",
+            "label":"Emails opened",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"items-count",
+            "label":"Items count",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"requests-count",
+            "label":"Requests count",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"email-requests-count",
+            "label":"Email requests count",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        },
+        {
+            "id":"unique-date-ount",
+            "label":"Unique dates count",
+            "operators":["=", "LIKE"],
+            "type":"string"
+        }
+    ]
+}
 ]
