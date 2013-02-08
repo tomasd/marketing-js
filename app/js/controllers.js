@@ -52,7 +52,7 @@ function FilterController($scope, CustomerFilters, $filter, FilterCounts, Filter
     }
 
     $scope.AddFilter = function(attribute, operator, value) {        
-        this.filterList[$scope.filterList.length-1].push({"attribute" : attribute, "operator" : operator, "value" : value});        
+        this.filterList[$scope.filterList.length-1].push({"attribute" : attribute, "operator" : operator, "value" : value, "editMode": false});        
 
         $scope.ResetFilterForm()
         $scope.refreshQuery();
@@ -127,5 +127,12 @@ function FilterController($scope, CustomerFilters, $filter, FilterCounts, Filter
         }
         // $scope.refreshQuery(); //tu to netreba - vola sa to v move filter
     }    
+
+    $scope.SetEditMode = function(item, editMode)
+    {        
+        item.editMode = editMode;
+        if(editMode==false)
+            $scope.refreshQuery();
+    }
 }
 FilterController.$inject = ['$scope', 'CustomerFilters', '$filter', 'FilterCounts', 'FilteredCustomers'];

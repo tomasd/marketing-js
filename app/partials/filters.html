@@ -38,9 +38,22 @@
                         {{counts.conCnt[$parent.$index][$index]}}
                     </td>
                     <td>
-                        <a href="linka na editaciu filtra">
+                        <a href="javascript:" ng-click="SetEditMode(item, true)" ng-hide="item.editMode">
                             {{item.attribute.label}} {{item.operator}} {{item.value}}
                         </a>
+                        <div ng-show="item.editMode">
+                        <form>
+                            <div>{{item.attribute.label}}</div>
+                            <div class="span2">
+                                <select id="operator" class="span12" ng-model="item.operator" ng-options="i for i in item.attribute.operators"></select>
+                            </div>
+                            <div class="span3">
+                                <input ng-model="item.value" id="value" name="value" size="15" type="text" value="" class="span12" placeholder="Value">
+                            </div>
+                            <button type="submit" class="btn btn-primary span2" ng-click="SetEditMode(item, false)">Save</button>
+                            <!--button type="reset" class="btn span2" ng-click="SetEditMode(item, false)">Cancel</button-->
+                        </form>
+                        </div>
                     </td>
                     <td>
                         <div class="pull-right">                
