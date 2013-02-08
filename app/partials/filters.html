@@ -4,8 +4,8 @@
     <h3>Add filter</h3>
   </div>
   <div class="modal-body">   
-    <div class="row-fluid">
-    <div class="span12">            
+    <div class="row-fluid">        
+    <div class="span12">
         <table class="table table-bordered table-condensed">
             <thead>
                 <tr>
@@ -28,14 +28,14 @@
                     </td>
                 </tr>       
                 <tr ng-show="itemgroup.length > 0">
-                    <td rowspan="{{itemgroup.length + 1}}"> 1</td>
+                    <td rowspan="{{itemgroup.length + 1}}"> {{counts.cumCnt[$index][itemgroup.length-1]}}</td>
                 </tr>                
                 <tr  ng-repeat="item in itemgroup">                    
                     <td>
-                        2
+                        {{counts.cumCnt[$parent.$index][$index]}}
                     </td>
-                    <td>
-                        2
+                    <td>                        
+                        {{counts.conCnt[$parent.$index][$index]}}
                     </td>
                     <td>
                         <a href="linka na editaciu filtra">
@@ -54,7 +54,7 @@
             </tbody>
             <tfoot >
                 <tr>
-                    <td colspan="3">Total: 2 customers</td>
+                    <td colspan="3">Total: {{counts.totalCnt}} customers</td>
                     <td colspan="2" class="span6">
                         <form class="form-inline">                            
                             <div class="span3">
@@ -69,13 +69,13 @@
                                 </select>
                             </div>                            
 
-                            <div class="span3" ng-show="currentFilter.operators.length">
+                            <div class="span2" ng-show="currentFilter.operators.length">
                                 <select id="operator" class="span12" ng-model="currentFilterProperties.selectedOperator" ng-options="i for i in currentFilter.operators"></select>
                             </div>
                             <div class="span3" ng-show="currentFilter.operators.length">
                                 <input ng-model="currentFilterProperties.value" id="value" name="value" size="15" type="text" value="" class="span12" placeholder="Value">
                             </div>
-                            <button type="submit" ng-show="currentFilter.operators.length" class="btn btn-primary span1" ng-click="AddFilter(currentFilter, currentFilterProperties.selectedOperator, currentFilterProperties.value)">Add</button>
+                            <button type="submit" ng-show="currentFilter.operators.length" class="btn btn-primary span2" ng-click="AddFilter(currentFilter, currentFilterProperties.selectedOperator, currentFilterProperties.value)">Add</button>
                             <button type="reset" ng-show="currentFilter.operators.length" class="btn span2" ng-click="ResetFilterForm()">Cancel</button>
                         </form>
                     </td>
@@ -94,23 +94,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><a href="/customer/686882/">
-                            2
-                    </a></td>
+                <tr ng-repeat="customer in customers">
+                    <td><a href="/customer/{{customer.id}}/">{{customer.externalID}}</a></td>
+                    <td><a href="/customer/{{customer.id}}/">{{customer.name | default:"N/A"}}</a></td>
+                    <td>{{customer.email}}</td>
+                    <td>{{customer.phone}}</td>
                     <td>
-                        <a href="/customer/686882/">
-                        
-                            Bruney Brian
-                        
-                        </a>
-                    </td>
-                    <td>brian@7segments.com</td>
-                    <td></td>
-                    <td>
-                        
-                            <span class="label label-success">Included</span>
-                        
+                        <span ng-hide="customer.excludedFromCampaigns" class="label label-success">Included</span>
+                        <span ng-show="customer.excludedFromCampaigns" class="label label-important">Excluded</span>
                     </td>
                 </tr>                
             </tbody>

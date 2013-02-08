@@ -1,0 +1,47 @@
+[
+	{
+		"id":1,
+		"externalID": 46,
+		"name": "Ferko Mrkvicka",
+		"email": "ferko@mrkvicka.sk",
+		"phone": "+421947424242",
+		"excludedFromCampaigns":false
+	},
+	{
+		"id":2,
+		"externalID": 42,
+		"name": "Jozko Mrkvicka",
+		"email": "Jozko@mrkvicka.sk",
+		"phone": "+421947474242",
+		"excludedFromCampaigns":false
+	},
+	{
+		"id":3,
+		"externalID": 43,
+		"name": "Nemam Mail",		
+		"phone": "+421947474742",
+		"excludedFromCampaigns":false
+	},
+	{
+		"id":4,
+		"externalID": 44,
+		"name": "Nemam Telefon",
+		"email": "nemam@telefon.sk",		
+		"excludedFromCampaigns":false
+	},
+	{
+		"id":5,
+		"externalID": 45,		
+		"email": "nemam@meno.sk",
+		"phone": "+421947474747",
+		"excludedFromCampaigns":false
+	},
+	{
+		"id":7,
+		"externalID": 47,
+		"name": "Nechcem Maily",
+		"email": "nechcem@maily.sk",
+		"phone": "+421942424242",
+		"excludedFromCampaigns":true
+	}
+]

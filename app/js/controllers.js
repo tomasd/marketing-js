@@ -7,7 +7,7 @@ function EmailController($scope, Email) {
 }
 EmailController.$inject = ['$scope', 'Email'];
 
-function FilterController($scope, CustomerFilters, $filter) {        
+function FilterController($scope, CustomerFilters, $filter, FilterCounts, FilteredCustomers) {        
     $scope.customerFilters = CustomerFilters.query();
     // $scope.filterList = [[{"attribute" : {
     //         "id":"first-name",
@@ -16,6 +16,14 @@ function FilterController($scope, CustomerFilters, $filter) {
     //         "type":"string"
     //     }, "operator" : "test", "value" : 47}]];
     $scope.filterList = [[]];
+
+    $scope.refreshQuery = function()
+    {
+        $scope.counts = FilterCounts.get();
+        $scope.customers = FilteredCustomers.query();
+    }
+
+    $scope.refreshQuery();
 
     $scope.SetFilter = function()//todo kam to ma pichnut
     {
@@ -47,12 +55,14 @@ function FilterController($scope, CustomerFilters, $filter) {
         this.filterList[$scope.filterList.length-1].push({"attribute" : attribute, "operator" : operator, "value" : value});        
 
         $scope.ResetFilterForm()
+        $scope.refreshQuery();
     };
 
     $scope.AddOr = function(attribute, operator, value) {        
         $scope.filterList.push([]);
 
         $scope.ResetFilterForm();
+        $scope.refreshQuery();
     }
 
     $scope.RemoveFilter = function(groupIndex, index) {
@@ -113,5 +123,18 @@ function FilterController($scope, CustomerFilters, $filter) {
                 $scope.MoveFilter(index-1,$scope.filterList[index-1].length-1,1);
         }
     }
+
+    // $scope.getCounts = function()
+    // {        
+    //     for(i=0;i<$scope.filterList.length;i++)
+    //     {
+    //         counts.push([]);
+    //         for(j=0;j<$scope.filterList[i].length;j++) 
+    //         {
+    //             counts[i].push(i);
+    //         }
+    //     }
+    //     return $scope.counts;
+    // }
 }
-FilterController.$inject = ['$scope', 'CustomerFilters', '$filter'];
+FilterController.$inject = ['$scope', 'CustomerFilters', '$filter', 'FilterCounts', 'FilteredCustomers'];
