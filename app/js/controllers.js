@@ -68,11 +68,13 @@ function FilterController($scope, CustomerFilters, $filter, FilterCounts, Filter
     $scope.RemoveFilter = function(groupIndex, index) {
       //remove item from list
       $scope.filterList[groupIndex].splice(index,1);
+      $scope.refreshQuery();
     };
 
     $scope.RemoveOr = function(index) {
       //merge lists  
       $scope.filterList.splice(index-1,2,$scope.filterList[index-1].concat($scope.filterList[index]));
+      $scope.refreshQuery();
     }
 
     $scope.MoveFilter = function(groupIndex, index, direction) {
@@ -109,6 +111,7 @@ function FilterController($scope, CustomerFilters, $filter, FilterCounts, Filter
                    $scope.filterList[groupIndex].splice(index+1,1);
             }
         }
+        $scope.refreshQuery();
     };
 
     $scope.MoveOr = function(index, direction) {        
@@ -122,19 +125,7 @@ function FilterController($scope, CustomerFilters, $filter, FilterCounts, Filter
             if($scope.filterList[index-1].length>0)
                 $scope.MoveFilter(index-1,$scope.filterList[index-1].length-1,1);
         }
-    }
-
-    // $scope.getCounts = function()
-    // {        
-    //     for(i=0;i<$scope.filterList.length;i++)
-    //     {
-    //         counts.push([]);
-    //         for(j=0;j<$scope.filterList[i].length;j++) 
-    //         {
-    //             counts[i].push(i);
-    //         }
-    //     }
-    //     return $scope.counts;
-    // }
+        // $scope.refreshQuery(); //tu to netreba - vola sa to v move filter
+    }    
 }
 FilterController.$inject = ['$scope', 'CustomerFilters', '$filter', 'FilterCounts', 'FilteredCustomers'];
