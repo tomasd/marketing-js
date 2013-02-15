@@ -58,7 +58,7 @@ function FilterController($scope, CustomerFilters, $filter, FilterCounts, Filter
         $scope.refreshQuery();
     };
 
-    $scope.AddOr = function(attribute, operator, value) {        
+    $scope.AddOr = function() {        
         $scope.filterList.push([]);
 
         $scope.ResetFilterForm();
